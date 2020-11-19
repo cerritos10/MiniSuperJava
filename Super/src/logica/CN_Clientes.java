@@ -8,11 +8,20 @@ package logica;
 import Controller.ClientesJpaController;
 import Entidad.Clientes;
 import Entidad.Usuarios;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -21,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class CN_Clientes {
     
     private ClientesJpaController cjp = new ClientesJpaController();
+     EntityManager em = cjp.getEntityManager();
     Clientes cli = new Clientes();
     private String mensaje = "";
     
@@ -107,4 +117,24 @@ public class CN_Clientes {
             List<Clientes> lista =  query.getResultList();
             return lista;
         }
+      public void ventasXCliente(int cli){
+        em.getTransaction().begin();
+         java.sql.Connection conexion = em.unwrap(java.sql.Connection.class);
+         em.getTransaction().commit();
+         try {
+        JasperReport reporte = null;
+        String path = "src\\Reportes\\rVentasXClie.jasper";
+        
+        Map parametro = new HashMap();
+        parametro.put("cliente", cli);
+        
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte,parametro, conexion);
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        } catch (Exception e) {
+             System.out.println("Error: "+ e.getMessage());
+        }
+    }
 }

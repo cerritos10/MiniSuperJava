@@ -6,6 +6,7 @@
 package principal;
 
 import javax.swing.JOptionPane;
+import logica.CN_Clientes;
 import logica.CN_Compra;
 import logica.CN_Detalle;
 import logica.CN_Productos;
@@ -25,11 +26,13 @@ public class Form_Reportes extends javax.swing.JPanel {
     CN_Detalle cnd = new CN_Detalle(); 
     CN_Ventas cnv = new CN_Ventas();
     CN_Compra cnc = new CN_Compra();
+    CN_Clientes cncl = new CN_Clientes();
     public Form_Reportes() {
         initComponents();
         llenarCombo();
         viewClientes("");
         panelMes.setVisible(false);
+        pnlCli.setVisible(false);
     }
     private listarClientes lc = new listarClientes();
     
@@ -81,7 +84,7 @@ public class Form_Reportes extends javax.swing.JPanel {
         cmbMEs = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtMEs = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        pnlCli = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaCliente = new javax.swing.JTable();
         txtBuscarCli = new rojeru_san.RSMTextFull();
@@ -189,35 +192,35 @@ public class Form_Reportes extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlCliLayout = new javax.swing.GroupLayout(pnlCli);
+        pnlCli.setLayout(pnlCliLayout);
+        pnlCliLayout.setHorizontalGroup(
+            pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCliLayout.createSequentialGroup()
+                .addGroup(pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCliLayout.createSequentialGroup()
                         .addGap(270, 285, Short.MAX_VALUE)
                         .addComponent(txtBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlCliLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 15, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+        pnlCliLayout.setVerticalGroup(
+            pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCliLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(txtBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 480, 250));
+        add(pnlCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 480, 250));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
@@ -245,7 +248,8 @@ public class Form_Reportes extends javax.swing.JPanel {
             cnc.anualGastoReporte();
         }
         else if (jComboBox1.getSelectedItem().equals("Ventas por cliente")) {
-            
+            int cli = Integer.parseInt(txtCliente.getText());
+            cncl.ventasXCliente(cli);
         }
          panelMes.setVisible(false);
     }//GEN-LAST:event_btnImprimirActionPerformed
@@ -254,6 +258,9 @@ public class Form_Reportes extends javax.swing.JPanel {
         if (jComboBox1.getSelectedItem().equals("Total ventas mensuales") || jComboBox1.getSelectedItem().equals("Total gastos mensuales")) {
             panelMes.setVisible(true);
             llenarComboMes();
+        }
+        else if (jComboBox1.getSelectedItem().equals("Ventas por cliente")) {
+            pnlCli.setVisible(true);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -283,9 +290,9 @@ public class Form_Reportes extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelMes;
+    private javax.swing.JPanel pnlCli;
     private rojeru_san.RSMTextFull txtBuscarCli;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtMEs;
