@@ -112,7 +112,7 @@ public class Form_Reportes extends javax.swing.JPanel {
                 btnImprimirActionPerformed(evt);
             }
         });
-        add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 122, -1));
+        add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 122, -1));
 
         panelMes.setBackground(new java.awt.Color(28, 33, 53));
 
@@ -157,6 +157,8 @@ public class Form_Reportes extends javax.swing.JPanel {
 
         add(panelMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 260, -1));
 
+        pnlCli.setBackground(new java.awt.Color(28, 33, 53));
+
         TablaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -192,21 +194,23 @@ public class Form_Reportes extends javax.swing.JPanel {
             }
         });
 
+        txtCliente.setBackground(new java.awt.Color(28, 33, 53));
+        txtCliente.setForeground(new java.awt.Color(28, 33, 53));
+        txtCliente.setBorder(null);
+
         javax.swing.GroupLayout pnlCliLayout = new javax.swing.GroupLayout(pnlCli);
         pnlCli.setLayout(pnlCliLayout);
         pnlCliLayout.setHorizontalGroup(
             pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCliLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCliLayout.createSequentialGroup()
-                        .addGap(270, 285, Short.MAX_VALUE)
-                        .addComponent(txtBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlCliLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtBuscarCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCliLayout.createSequentialGroup()
                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlCliLayout.setVerticalGroup(
             pnlCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +224,7 @@ public class Form_Reportes extends javax.swing.JPanel {
                 .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        add(pnlCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 480, 250));
+        add(pnlCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 400, 250));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
