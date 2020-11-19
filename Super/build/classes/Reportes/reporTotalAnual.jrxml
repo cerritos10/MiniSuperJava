@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporTotalAnual" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6fd96d1a-06a0-4084-a3a5-200a5f494c11">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT SUM(vv.total)AS TOTAL, TO_CHAR(vv.fecha,'mm') AS MES, TO_CHAR(vv.fecha,'YY') AS AÑO FROM ventas vv
+GROUP BY TO_CHAR(vv.fecha,'mm'), TO_CHAR(vv.fecha,'YY')]]>
+	</queryString>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="MES" class="java.lang.String"/>
+	<field name="AÑO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="17" width="308" height="44" uuid="3ae22362-6280-4b07-b6d8-57efa184c645"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TOTAL VENTAS POR AÑO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="8" width="92" height="71" uuid="d02cbf64-a17a-407a-bc6a-19814e61704b"/>
+				<imageExpression><![CDATA["C:\\Users\\cerri\\Desktop\\Ing.Sistemas\\MiniSuperJava\\Super\\src\\iconos\\logo.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="132" y="61" width="301" height="20" uuid="c4a4876c-a01f-4a87-b256-2ed289cc607d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="81" y="22" width="100" height="20" uuid="a7bfd6fa-744d-4492-80f1-b4baa3751960"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="22" width="100" height="20" uuid="9bcc159b-4329-4185-a7a7-77cb9813fd83"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="22" width="100" height="20" uuid="986cd4ed-fcbb-446e-a6d5-73241524d0ff"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="81" y="52" width="388" height="1" uuid="77637ac2-9e8f-48d7-9223-ac7ced696760"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="81" y="0" width="100" height="20" uuid="0884feef-b763-4c08-a410-371ff7febf3c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{MES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="0" width="100" height="20" uuid="3a577794-f9d8-461f-95ec-70084cc98d30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AÑO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="0" width="100" height="20" uuid="dcb2746a-8d75-4202-aecf-acc6a3c4c087"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="171" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="60" y="0" width="432" height="161" uuid="e4619576-a33c-494d-b770-411ff35f86b8"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Ventas Anuales"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MES}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TOTAL}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

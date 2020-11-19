@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportTotalMensual" language="groovy" pageWidth="540" pageHeight="576" columnWidth="500" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aaf78915-3d57-4ede-84ac-bc947543f36c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT SUM(vv.total)AS TOTAL, TO_CHAR(vv.fecha,'mm') AS MES, TO_CHAR(vv.fecha,'YY') AS AÑO 	
+ FROM ventas vv
+WHERE TO_CHAR(vv.fecha,'mm') =$P{Mes}
+GROUP BY TO_CHAR(vv.fecha,'mm'), TO_CHAR(vv.fecha,'YY')
+
+]]>
+	</queryString>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="MES" class="java.lang.String"/>
+	<field name="AÑO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="148" y="15" width="308" height="44" uuid="53d83a5e-8636-43b5-8b6b-da9b430a0924"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TOTAL VENTAS POR MES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="26" y="8" width="92" height="71" uuid="699c51de-702c-4405-9516-9f3bb5bbfdff"/>
+				<imageExpression><![CDATA["C:\\Users\\cerri\\Desktop\\Ing.Sistemas\\MiniSuperJava\\Super\\src\\iconos\\logo.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="148" y="59" width="301" height="20" uuid="75015fd6-9b90-4f73-b940-39ad668d3e48"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="68" y="21" width="100" height="20" uuid="cf70aa12-bace-4486-8ed6-ea5b7c005215"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="21" width="100" height="20" uuid="0bd6e19e-01e2-46a5-a80f-dc9fe79f4eb0"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="21" width="100" height="20" uuid="3630b7c4-b63b-48ac-8b5a-97fd67e6fe0b"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="68" y="10" width="379" height="1" uuid="36c20031-f881-4096-a053-b13488ee69fd"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#FF0000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="70" y="52" width="379" height="1" uuid="d5b4cea2-e837-4489-af78-b3dd80da72e1"/>
+				<graphicElement>
+					<pen lineWidth="1.51" lineColor="#FF0000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="68" y="0" width="100" height="20" uuid="e403c83e-3273-4a87-8d2a-1154b879616c"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="0" width="100" height="20" uuid="9d442a7d-7714-4cf4-ba91-eb550d1df8e5"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AÑO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="0" width="68" height="20" uuid="9dac1ef7-95c2-4f66-b034-055f568e1b32"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="0" width="27" height="20" uuid="d841fa32-0787-4d56-ba2c-1a51806943bf"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

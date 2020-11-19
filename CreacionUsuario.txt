@@ -1,0 +1,9 @@
+create user miniSuper IDENTIFIED by super;
+grant all PRIVILEGES to miniSuper;
+grant CONNECT TO miniSuper;
+
+-------------------------------------------
+
+create user MinSuper IDENTIFIED by super;
+grant all PRIVILEGES to MinSuper;
+grant CONNECT TO MinSuper

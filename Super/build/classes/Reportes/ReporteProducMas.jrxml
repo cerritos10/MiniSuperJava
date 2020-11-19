@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProducMas" language="groovy" pageWidth="568" pageHeight="488" columnWidth="528" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0213bf6e-426e-4700-a370-bb91cbf722a9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM(
+SELECT pp.producto,SUM(dd.cantidad) AS CantidadVendidad FROM detalle_ventas dd
+JOIN productos pp ON pp.id_producto= dd.id_producto
+GROUP BY pp.producto ORDER BY CantidadVendidad DESC)WHERE ROWNUM <= 3]]>
+	</queryString>
+	<field name="PRODUCTO" class="java.lang.String"/>
+	<field name="CANTIDADVENDIDAD" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="111" y="0" width="362" height="46" uuid="b497906e-8157-4976-b793-a8a44c3e9f7b"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[PRODUCTOS MAS VENDIDOS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="0" width="78" height="79" uuid="ca07b248-db8d-43fe-9291-c2b5567da854"/>
+				<imageExpression><![CDATA["C:\\Users\\cerri\\Desktop\\Ing.Sistemas\\MiniSuperJava\\Super\\src\\iconos\\logo.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="111" y="59" width="362" height="20" uuid="bec9f052-7b46-4b9b-bde5-58db54252cca"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="74" y="21" width="219" height="20" uuid="97dd1471-35de-48f4-b13a-018a8ff4a333"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="21" width="151" height="20" uuid="e3450524-4648-48cc-a0d4-bc7c2466159c"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD VENDIDA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="74" y="9" width="399" height="1" uuid="d33306a0-bdd8-4fd6-a18b-827b951bd7ff"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#CC0000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="74" y="41" width="399" height="1" uuid="702ca8fa-b823-4c44-810e-50a5bc4cf601"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#CC0000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="74" y="0" width="219" height="20" uuid="34e6f032-232c-476b-9ae8-5f9235855f70"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="151" height="20" uuid="66d47c5b-3440-4caf-8032-52426e763c03"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANTIDADVENDIDAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="154" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="13" y="0" width="504" height="154" uuid="f2bad2cb-fe4d-48bb-b546-0987964f9775"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Productos mas Vendidos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{PRODUCTO}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{CANTIDADVENDIDAD}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

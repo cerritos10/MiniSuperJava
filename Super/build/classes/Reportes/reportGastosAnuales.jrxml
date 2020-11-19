@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportGastosAnuales" language="groovy" pageWidth="540" pageHeight="432" columnWidth="500" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6effd9a6-ae5b-43e7-bc65-2f81175e474a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT SUM(cc.gasto)AS GASTO, TO_CHAR(cc.fecha,'mm') AS MES, TO_CHAR(cc.fecha,'YY') AS AÑO FROM compra cc
+GROUP BY TO_CHAR(cc.fecha,'mm'), TO_CHAR(cc.fecha,'YY')]]>
+	</queryString>
+	<field name="GASTO" class="java.math.BigDecimal"/>
+	<field name="MES" class="java.lang.String"/>
+	<field name="AÑO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="103" y="43" width="385" height="20" uuid="ef4aeea6-771d-4b04-a416-41336dfdc77a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="74" height="79" uuid="53ddca9a-a188-4ecd-9c6f-9d263c40a375"/>
+				<imageExpression><![CDATA["C:\\Users\\cerri\\Desktop\\Ing.Sistemas\\MiniSuperJava\\Super\\src\\iconos\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="103" y="10" width="385" height="33" uuid="195d698d-6eac-4acb-8420-88fb1dc059f5"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE GASTOS MENSULAES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="22" width="100" height="21" uuid="47bc3ffa-0b4b-4d68-a786-3e8bca2ec3c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[GASTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="22" width="100" height="20" uuid="549c27e3-1c2e-4143-9dfa-e53daa34262f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="22" width="100" height="20" uuid="182ebc16-751f-4ee0-a4d3-6bd5dcdbac6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="45" y="21" width="436" height="1" uuid="a3c980a0-90e2-4606-a25a-b708d5187e1b"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#FF0000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="46" y="54" width="436" height="1" uuid="19f65c50-e0e3-45f6-982e-3a6ee780d4e2"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#FF0000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="52" y="0" width="94" height="20" uuid="14861b81-d365-44de-80cf-c0978de5b056"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{GASTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="0" width="100" height="20" uuid="e6d2f1a0-0bbb-4ade-ad10-5bcbdf2c648c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="100" height="20" uuid="2df5e9f1-99e9-449b-9047-44ebf1401514"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{AÑO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="0" width="6" height="20" uuid="3e711d29-bb61-4976-89d7-8d37f2bc316e"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="136" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="52" y="12" width="416" height="124" uuid="b088a8c5-6fbd-4c66-874a-11c103b83f67"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Gastos Anuales"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MES}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{GASTO}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
