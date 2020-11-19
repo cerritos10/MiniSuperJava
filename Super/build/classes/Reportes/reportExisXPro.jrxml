@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportExisXPro" language="groovy" pageWidth="595" pageHeight="337" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27c8ed35-1500-4016-abb7-f89cfdcba941">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="producto" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select pp.producto,tt.tipo,pp.stock from productos pp
+inner join tipo_producto tt on tt.id_tipo_producto = pp.id_tipo_producto
+where pp.id_producto= $P{producto}]]>
+	</queryString>
+	<field name="PRODUCTO" class="java.lang.String"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="STOCK" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="96" y="0" width="365" height="33" uuid="0c9d8471-d148-429e-b99e-6cb5b790f659"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[EXISTENCIAS POR PRODUCTO]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="96" y="33" width="365" height="20" uuid="e4ce136f-c52c-4465-96dd-ccb01cc50e85"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="22" y="3" width="66" height="60" uuid="b381fc13-eebe-4a6e-aeed-4139414fbc39"/>
+				<imageExpression><![CDATA["C:\\Users\\cerri\\Desktop\\Ing.Sistemas\\MiniSuperJava\\Super\\src\\iconos\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="33" width="100" height="20" uuid="12b46db1-a7a0-4dd0-a810-bf13488f7180"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="33" width="100" height="20" uuid="d8da36be-0d7f-401c-b94c-25125ecb5095"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="33" width="100" height="20" uuid="462948bb-f06a-437b-aa43-ea01615bb5a2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+			<line>
+				<reportElement x="88" y="22" width="414" height="1" uuid="10ec842e-eccc-4ca4-a714-fb501136bc81"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#FF0033"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="88" y="53" width="414" height="1" uuid="371816c1-32a8-4b45-9ad5-cf92ee7e4251"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#FF0033"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="88" y="0" width="100" height="20" uuid="0991b378-951a-46cb-a1d8-77ea749c5f36"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="0" width="100" height="20" uuid="9dfca96b-8c20-45e7-be9b-6ef9467169e4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="0" width="100" height="20" uuid="1253bce2-04ad-4b0f-97ba-11b014e210cd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{STOCK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
