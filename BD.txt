@@ -157,7 +157,7 @@ CREATE VIEW vista_producto
  FROM productos p
  inner join tipo_producto t on t.id_tipo_producto=p.id_tipo_producto;
 
----------------------------------para reportes------------------------------------------------------------------;
+---------------------------------Para reportes------------------------------------------------------------------;
 SELECT
      CLIENTES."NOMBRE" AS CLIENTES_NOMBRE,
      CLIENTES."DIRECCION" AS CLIENTES_DIRECCION,
