@@ -10,6 +10,8 @@ import Entidad.Productos;
 import Entidad.TipoProducto;
 import Entidad.ViewProductosFull;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -98,5 +100,25 @@ public class CN_Productos {
               System.out.println("Error: "+ e.getMessage());
          }
      }
+     public void existenciasXProducto(int pro){
+        em.getTransaction().begin();
+         java.sql.Connection conexion = em.unwrap(java.sql.Connection.class);
+         em.getTransaction().commit();
+         try {
+        JasperReport reporte = null;
+        String path = "src\\Reportes\\reportExisXPro.jasper";
+        
+        Map parametro = new HashMap();
+        parametro.put("producto", pro);
+        
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte,parametro, conexion);
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        } catch (Exception e) {
+             System.out.println("Error: "+ e.getMessage());
+        }
+    }
     
 }
