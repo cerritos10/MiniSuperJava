@@ -400,16 +400,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnrRespaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrRespaldoActionPerformed
         try {
-            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \" cd C:\\Users\\cerri\\Desktop\\Ing.Sistemas && expdp system/oracle schemas=miniSuper dumpfile=respaldo2.dmp && exit");
+            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"  expdp system/oracle schemas=miniSuper dumpfile=respaldo.dmp && exit");
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnrRespaldoActionPerformed
 
     private void btnrRestauracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrRestauracionActionPerformed
-//        impdp system/oracle@xe remap_schema=miniSuper:prueba dumpfile=RESPALDO2.dmp
                 try {
-            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \" cd C:\\Users\\cerri\\Desktop\\Ing.Sistemas && impdp system/oracle@xe remap_schema=miniSuper:prueba5 dumpfile=RESPALDO.dmp && exit");
+            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"  impdp system/oracle@xe remap_schema=miniSuper:prueba5 dumpfile=respaldo.dmp && exit");
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

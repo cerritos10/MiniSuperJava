@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/principal/Principal.java</file>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/principal/Login.java</file>
+            <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/Entidad/Usuarios.java</file>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/logica/CN_Compra.java</file>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/principal/Form_Venta.java</file>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/principal/Form_Reportes.java</file>
+            <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/logica/InicioSesion.java</file>
             <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/logica/CN_Productos.java</file>
-            <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/logica/CN_Detalle.java</file>
-            <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/logica/CN_Ventas.java</file>
+            <file>file:/C:/Users/cerri/Desktop/Ing.Sistemas/MiniSuperJava/Super/src/META-INF/persistence.xml</file>
         </group>
     </open-files>
 </project-private>

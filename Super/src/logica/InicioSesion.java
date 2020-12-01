@@ -55,8 +55,7 @@ public class InicioSesion {
                  String nombre = uu.getNombre();
                  sesion.nombre= nombre;
                  System.out.println("id recuperado: " + sesion.idUsuario);
-                 return uu;
-                
+                 return uu;    
     }
 
 }
