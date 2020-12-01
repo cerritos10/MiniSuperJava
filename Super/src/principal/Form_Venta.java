@@ -64,7 +64,6 @@ public final class Form_Venta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtCliente = new rojeru_san.RSMTextFull();
         btnGuardar = new rojeru_san.RSButtonRiple();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableVenta = new javax.swing.JTable();
@@ -72,7 +71,6 @@ public final class Form_Venta extends javax.swing.JPanel {
         ver = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaCliente = new javax.swing.JTable();
-        txtProducto = new rojeru_san.RSMTextFull();
         txtStock = new rojeru_san.RSMTextFull();
         txtPrecVenta = new rojeru_san.RSMTextFull();
         txtCant = new rojeru_san.RSMTextFull();
@@ -93,19 +91,13 @@ public final class Form_Venta extends javax.swing.JPanel {
         txtUser = new javax.swing.JTextField();
         txtFactura = new javax.swing.JTextField();
         btnImprimir = new rojeru_san.RSButtonRiple();
+        txt_nProducto = new rojeru_san.RSMTextFull();
+        txt_nCliente = new rojeru_san.RSMTextFull();
+        txtProducto = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(28, 33, 53));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtCliente.setBackground(new java.awt.Color(28, 33, 53));
-        txtCliente.setForeground(new java.awt.Color(255, 255, 255));
-        txtCliente.setBordeColorFocus(new java.awt.Color(255, 255, 255));
-        txtCliente.setBordeColorNoFocus(new java.awt.Color(255, 255, 255));
-        txtCliente.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtCliente.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
-        txtCliente.setPlaceholder("Cliente");
-        txtCliente.setSelectedTextColor(new java.awt.Color(255, 255, 255));
-        add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 194, 33));
 
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +143,13 @@ public final class Form_Venta extends javax.swing.JPanel {
 
             }
         ));
+        TablaCliente.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                TablaClienteAncestorResized(evt);
+            }
+        });
         TablaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaClienteMouseClicked(evt);
@@ -161,16 +160,6 @@ public final class Form_Venta extends javax.swing.JPanel {
         ver.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 170));
 
         add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 320, 190));
-
-        txtProducto.setBackground(new java.awt.Color(28, 33, 53));
-        txtProducto.setForeground(new java.awt.Color(255, 255, 255));
-        txtProducto.setBordeColorFocus(new java.awt.Color(255, 255, 255));
-        txtProducto.setBordeColorNoFocus(new java.awt.Color(255, 255, 255));
-        txtProducto.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtProducto.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
-        txtProducto.setPlaceholder("Producto");
-        txtProducto.setSelectedTextColor(new java.awt.Color(255, 255, 255));
-        add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 194, 33));
 
         txtStock.setBackground(new java.awt.Color(28, 33, 53));
         txtStock.setForeground(new java.awt.Color(255, 255, 255));
@@ -370,20 +359,60 @@ public final class Form_Venta extends javax.swing.JPanel {
             }
         });
         add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 120, -1));
+
+        txt_nProducto.setBackground(new java.awt.Color(28, 33, 53));
+        txt_nProducto.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nProducto.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        txt_nProducto.setBordeColorNoFocus(new java.awt.Color(255, 255, 255));
+        txt_nProducto.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_nProducto.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        txt_nProducto.setPlaceholder("Producto");
+        txt_nProducto.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        txt_nProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nProductoKeyTyped(evt);
+            }
+        });
+        add(txt_nProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 194, 33));
+
+        txt_nCliente.setBackground(new java.awt.Color(28, 33, 53));
+        txt_nCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nCliente.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        txt_nCliente.setBordeColorNoFocus(new java.awt.Color(255, 255, 255));
+        txt_nCliente.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_nCliente.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        txt_nCliente.setPlaceholder("Cliente");
+        txt_nCliente.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        txt_nCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nClienteKeyTyped(evt);
+            }
+        });
+        add(txt_nCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 194, 33));
+
+        txtProducto.setEditable(false);
+        txtProducto.setBackground(new java.awt.Color(28, 33, 53));
+        txtProducto.setForeground(new java.awt.Color(28, 33, 53));
+        txtProducto.setBorder(null);
+        add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 210, 80, -1));
+
+        txtCliente.setEditable(false);
+        txtCliente.setBackground(new java.awt.Color(28, 33, 53));
+        txtCliente.setForeground(new java.awt.Color(28, 33, 53));
+        txtCliente.setBorder(null);
+        add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void llenarUsuario(JTextField usuario){
         String id = sesion.idUsuario+"";
         usuario.setText(id);
     }
-    
     public void idSumVentas(){
         int id;
         id = cnv.idVentas();
         txtFactura.setText(id + "");
     }
 
-    
     public void viewClientes(String nombre){
         lc.verClientess(TablaCliente,nombre);
     }
@@ -490,7 +519,7 @@ public final class Form_Venta extends javax.swing.JPanel {
     private void TablaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoMouseClicked
         int seleccionar = TablaProducto.getSelectedRow();
         txtProducto.setText(TablaProducto.getValueAt(seleccionar, 0)+"");
-        txtNameProduct.setText(TablaProducto.getValueAt(seleccionar, 1)+"");
+        txt_nProducto.setText(TablaProducto.getValueAt(seleccionar, 1)+"");
         txtPrecVenta.setText(TablaProducto.getValueAt(seleccionar, 3)+"");
          txtStock.setText(TablaProducto.getValueAt(seleccionar, 4)+"");
     }//GEN-LAST:event_TablaProductoMouseClicked
@@ -508,7 +537,7 @@ public final class Form_Venta extends javax.swing.JPanel {
 
         int fac = Integer.parseInt(txtFactura.getText());
         int idprod = Integer.parseInt(txtProducto.getText());
-        String pro = txtNameProduct.getText();
+        String pro = txt_nProducto.getText();
         int cant = Integer.parseInt(txtCant.getText());
         int stock = Integer.parseInt(txtStock.getText());
         double prec = Double.parseDouble(txtPrecVenta.getText().toString());
@@ -539,6 +568,7 @@ public final class Form_Venta extends javax.swing.JPanel {
     private void TablaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaClienteMouseClicked
         int seleccionar = TablaCliente.getSelectedRow();
         txtCliente.setText(TablaCliente.getValueAt(seleccionar, 0)+"");
+        txt_nCliente.setText(TablaCliente.getValueAt(seleccionar, 1)+"");
     }//GEN-LAST:event_TablaClienteMouseClicked
 
     private void txtBuscarCliKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarCliKeyReleased
@@ -586,6 +616,18 @@ public final class Form_Venta extends javax.swing.JPanel {
 
         cnv.facturaReporte(txtFactura);
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void TablaClienteAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_TablaClienteAncestorResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaClienteAncestorResized
+
+    private void txt_nProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nProductoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nProductoKeyTyped
+
+    private void txt_nClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nClienteKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nClienteKeyTyped
     public void calcularTotal(){
         totalpagar = 0;
         for (int i = 0; i < TableVenta.getRowCount(); i++) {
@@ -614,17 +656,19 @@ public final class Form_Venta extends javax.swing.JPanel {
     private rojeru_san.RSMTextFull txtBuscarCli;
     private rojeru_san.RSMTextFull txtBuscarPro;
     private rojeru_san.RSMTextFull txtCant;
-    private rojeru_san.RSMTextFull txtCliente;
+    private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtFactura;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNSerie;
     private javax.swing.JTextField txtNameProduct;
     private rojeru_san.RSMTextFull txtPrecVenta;
-    private rojeru_san.RSMTextFull txtProducto;
+    private javax.swing.JTextField txtProducto;
     private rojeru_san.RSMTextFull txtStock;
     private javax.swing.JTextField txtTotalPagar;
     private javax.swing.JTextField txtUser;
+    private rojeru_san.RSMTextFull txt_nCliente;
+    private rojeru_san.RSMTextFull txt_nProducto;
     private javax.swing.JPanel ver;
     // End of variables declaration//GEN-END:variables
 }
